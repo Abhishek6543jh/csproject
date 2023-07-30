@@ -32,7 +32,7 @@ async function uploadtodb(req,res) {
     }
   }
 
-////eneded
+//ended
 
 
 //function that validate user with login page details
