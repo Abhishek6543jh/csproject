@@ -62,7 +62,6 @@ async function userdbauth(user,pass,req,res) {
   }
 //ended
 
-
 app.get("/",(req,res)=>{
     res.render("index.ejs");
 });
