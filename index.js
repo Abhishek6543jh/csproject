@@ -80,8 +80,6 @@ app.post("/regester/reg",(req,res)=>{
 
       uploadtodb(req,res).catch(console.dir);
       res.redirect("/login");
-
-
 });
 app.listen(port,(req,res)=>{
     console.log("server is listening");
