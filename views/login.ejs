@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+    
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewpoint" content="width=device-width,
@@ -8,12 +8,14 @@
         <title>
             login
         </title>
-        <link rel="stylesheet" href="style.css">
+       
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Borel&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
+    @import url("https://fonts.googleapis.com/css2? family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
     @import url("https://fonts.googleapis.com/css2? family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
 *{
@@ -22,25 +24,74 @@
     box-sizing: border-box;
     font-family: "Poppins",sans-serif;
 }
+.name{
+    font-family: borel;
+    position: absolute;
+    top: 90px; 
+    font-weight: 900 bold;
+    font-size: 40px;
+    color:rgb(227, 237, 32) ;
+	animation: gradient1 6s ease infinite;
+	height: 100vh;
+}
+
+@keyframes gradient1 {
+	0% {
+		color: red 10%;
+	}
+	25% {
+		color:orange;
+	}
+    50% {
+        color: #ee7752;
+    }
+    75%{
+        color: antiquewhite;
+    }
+	100% {
+		color:rgb(27, 234, 107);
+	}
+}
+
+
+
+
 body{
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(to bottom,#3475d0,#b353d9);
-    background-size: cover;
-    background-position: center;
+    background: linear-gradient(-45deg, #ee7752, #29da84, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 10s ease infinite;
+	height: 100vh;
 }
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
 .wrapper{
     width: 420px;
-    background: transparent;
     border: 2px solid rgba(255, 255, 255, .2);
-    backdrop-filter: blur(20px);
     box-shadow: 0 0 10px rgba(0,0,0, .2);
     color: #fff;
     border-radius: 10px;
     padding: 30px 40px;
     margin-top: 60px;
+    background-color: rgb(206, 25, 206);
+    background: transparent;
+    backdrop-filter: blur(20px);
+    
 }
 .wrapper h1{
     font-size: 36px;
@@ -74,22 +125,23 @@ body{
     transform: translateY(-50%);
     font-size: 20px;
 }
-.wrapper .agree {
+.wrapper .remember-forgot {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     font-size: 14.5px;
     margin: -15px  0 15px;
 }
-.agree label input{
+.remember-forgot label input{
     accent-color: #fff;
     margin-right: 3px;
 }
-.agree a{
+.remember-forgot a{
     color: #fff;
     text-decoration: none;
 }
-.agree a:hover{
+.remember-forgot a:hover{
     text-decoration: underline;
+    color: orange;
 }
 .wrapper .btn{
     width: 100%;
@@ -104,37 +156,45 @@ body{
     color: #333;
     font-weight: 600;
 }
-.wrapper .login-link{
+.wrapper .register-link{
     font-size: 14.5px;
     text-align: center;
     margin: 20px 0 15px;
 }
-.login-link p a{
+.register-link p a{
     color: #fff;
     text-decoration: none;
     font-weight: 600;
 }
-.login-link p a:hover{
+.register-link p a:hover{
     text-decoration: underline;
+    color: orange;
 }
-</style>
+.btn:hover{
+    background-color: orange;
 
+    
+}
+
+
+
+</style>
     </head>
     <body>
         <div class="name">
-           
+           <marquee behavior="scroll" direction="left">Welcome To Read N' Share</marquee> 
         </div>
         <div class="wrapper">
-            <form action="/login/auth" method="post">
+            <form action="/login/auth" method="post" >
                 <h1>Login</h1>
                 <div class="inputbox">
-                    <input type="text" placeholder="Username"
+                    <input type="text" placeholder="username"
                     required name="username">
                     <i class='bx bxs-user'></i>
                 </div>
                 <div class="inputbox">
-                    <input type="password" placeholder="Password"
-                    required name="password">
+                    <input type="password" placeholder="password"
+                    required name ="password">
                     <i class='bx bxs-lock-alt'></i>
                 </div>
                 <div class="remember-forgot">

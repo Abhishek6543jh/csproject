@@ -4,16 +4,655 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>home</title>
-    <nav>
-        <li>
-            <a href="regester">regester</a>
-        </li>
-        <li>
-            <a href="login">login</a>
-        </li>
-    </nav>
+   <nav>
+    
+   </nav>
+
+   <style>
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+
+body {
+background: hsl(220, 10%, 12%);
+}
+
+/* default */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* body */
+.main-container {
+  min-height: 100vh;
+  padding: 40px;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  background: hsl(220, 10%, 12%);
+  font-family: "Lato", "Segoe Ui", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* .flip-card-container */
+.flip-card-container {
+  --hue: 150;
+  --primary: hsl(var(--hue), 50%, 50%);
+  --white-1: hsl(0, 0%, 90%);
+  --white-2: hsl(0, 0%, 80%);
+  --dark: hsl(var(--hue), 25%, 10%);
+  --grey: hsl(0, 0%, 50%);
+
+  width: 310px;
+  height: 500px;
+  margin: 40px;
+
+  perspective: 1000px;
+}
+
+/* .flip-card */
+.flip-card {
+  width: inherit;
+  height: inherit;
+
+  position: relative;
+  transform-style: preserve-3d;
+  transition: .6s .1s;
+}
+
+/* hover and focus-within states */
+.flip-card-container:hover .flip-card,
+.flip-card-container:focus-within .flip-card {
+  transform: rotateY(180deg);
+}
+
+/* .card-... */
+.card-front,
+.card-back {
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+
+  background: var(--dark);
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+
+  backface-visibility: hidden;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .card-front */
+.card-front {
+  transform: rotateY(0deg);
+  z-index: 2;
+}
+
+/* .card-back */
+.card-back {
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+
+/* figure */
+figure {
+  z-index: -1;
+}
+
+/* figure, .img-bg */
+figure,
+.img-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+}
+
+/* img */
+img {
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  object-fit:cover;
+}
+
+/* figcaption */
+figcaption {
+  display: block;
+
+  width: auto;
+  margin-top: 12%;
+  padding: 8px 22px;
+
+  font-weight: bold;
+  line-height: 1.6;
+  letter-spacing: 2px;
+  word-spacing: 6px;
+  text-align: right;
+
+  position: absolute;
+  top: 0;
+  right: 12px;
+
+  color: var(--white-1);
+  background: hsla(var(--hue), 25%, 10%, .5);
+}
+
+/* .img-bg */
+.img-bg {
+  background: hsla(var(--hue), 25%, 10%, .5);
+}
+
+.card-front .img-bg {
+  clip-path: polygon(0 20%, 100% 40%, 100% 100%, 0 100%);
+}
+
+.card-front .img-bg::before {
+  content: "";
+
+  position: absolute;
+  top: 34%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(18deg);
+
+  width: 100%;
+  height: 6px;
+  border: 1px solid var(--primary);
+  border-left-color: transparent;
+  border-right-color: transparent;
+
+  transition: .1s;
+}
+
+.card-back .img-bg {
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 60%);
+}
+
+/* hover state */
+.flip-card-container:hover .card-front .img-bg::before {
+  width: 6px;
+  border-left-color: var(--primary);
+  border-right-color: var(--primary);
+}
+
+/* ul */
+ul {
+  padding-top: 50%;
+  margin: 0 auto;
+  width: 70%;
+  height: 100%;
+
+  list-style: none;
+  color: var(--white-1);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* li */
+li {
+  width: 100%;
+  margin-top: 12px;
+  padding-bottom: 12px;
+
+  font-size: 14px;
+  text-align: center;
+
+  position: relative;
+}
+
+li:nth-child(2n) {
+  color: var(--white-2);
+}
+
+li:not(:last-child)::after {
+  content: "";
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 1px;
+
+  background: currentColor;
+  opacity: .2;
+}
+
+/* button */
+button {
+  font-family: inherit;
+  font-weight: bold;
+  color: var(--white-1);
+
+  letter-spacing: 2px;
+
+  padding: 9px 20px;
+  border: 1px solid var(--grey);
+  border-radius: 1000px;
+  background: transparent;
+  transition: .3s;
+
+  cursor: pointer;
+}
+
+button:hover,
+button:focus {
+  color: var(--primary);
+  background: hsla(var(--hue), 25%, 10%, .2);
+  border-color: currentColor;
+}
+
+button:active {
+  transform: translate(2px);
+}
+
+/* .design-container */
+.design-container {
+  --tr: 90;
+  --op: .5;
+
+  width: 100%;
+  height: 100%;
+
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  pointer-events: none;
+}
+
+/* .design */
+.design {
+  display: block;
+
+  background: var(--grey);
+  position: absolute;
+
+  opacity: var(--op);
+  transition: .3s;
+}
+
+.design--1,
+.design--2,
+.design--3,
+.design--4 {
+  width: 1px;
+  height: 100%;
+}
+
+.design--1,
+.design--2 {
+  top: 0;
+  transform: translateY(calc((var(--tr) - (var(--tr) * 2)) * 1%))
+}
+
+.design--1 {
+  left: 20%;
+}
+
+.design--2 {
+  left: 80%;
+}
+
+.design--3,
+.design--4 {
+  bottom: 0;
+  transform: translateY(calc((var(--tr) + (var(--tr) - var(--tr))) * 1%))
+}
+
+.design--3 {
+  left: 24%;
+}
+
+.design--4 {
+  left: 76%;
+}
+
+.design--5,
+.design--6,
+.design--7,
+.design--8 {
+  width: 100%;
+  height: 1px;
+}
+
+.design--5,
+.design--6 {
+  left: 0;
+  transform: translateX(calc((var(--tr) - (var(--tr) * 2)) * 1%));
+}
+
+.design--5 {
+  top: 41%;
+}
+
+.design--6 {
+  top: 59%;
+}
+
+.design--7,
+.design--8 {
+  right: 0;
+  transform: translateX(calc((var(--tr) + (var(--tr) - var(--tr))) * 1%))
+}
+
+.design--7 {
+  top: 44%;
+}
+
+.design--8 {
+  top: 56%;
+}
+
+/* states */
+button:hover+.design-container,
+button:active+.design-container,
+button:focus+.design-container {
+  --tr: 20;
+  --op: .7;
+}
+
+.abs-site-link {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  color: hsla(0, 0%, 100%, .6);
+  font-size: 16px;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+   </style>
+    
 </head>
 <body>
+  <div class="main-container">
+    
+      <!-- flip-card-container -->
+<div class="flip-card-container" style="--hue: 220">
+  <div class="flip-card">
+
+    <div class="card-front">
+      <figure>
+        <div class="img-bg"></div>
+        <img src="https://books.google.co.in/books/publisher/content?id=9K_xDwAAQBAJ&pg=PP1&img=1&zoom=3&hl=en&bul=1&sig=ACfU3U0bQU1lMec2rdd7-l7pVx_0nrGOMg&w=1280" alt="book-1">
+        <figcaption>NCERT class 10</figcaption>
+      </figure>
+
+      <ul>
+        <li>Edition:2020</li>
+        <li>Publisher:Repro Books Limited</li>
+        <li>Author:Educart</li>
+        <li>published:11 May 2020</li>
+        <li>Page count:218</li>
+      </ul>
+    </div>
+
+    <div class="card-back">
+      <figure>
+        <div class="img-bg"></div>
+        <img src="https://images.ctfassets.net/9i3f0j4g4w7c/60HLVtfnEvhRum8cNQA8op/0bd398630ada15dd80c865d9804a587d/quote-2-2.png" alt="quote">
+      </figure>
+
+      <button>GET IT</button>
+
+      <div class="design-container">
+        <span class="design design--1"></span>
+        <span class="design design--2"></span>
+        <span class="design design--3"></span>
+        <span class="design design--4"></span>
+        <span class="design design--5"></span>
+        <span class="design design--6"></span>
+        <span class="design design--7"></span>
+        <span class="design design--8"></span>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- /flip-card-container -->
+
+<!-- flip-card-container -->
+<div class="flip-card-container" style="--hue: 170">
+  <div class="flip-card">
+
+    <div class="card-front">
+      <figure>
+        <div class="img-bg"></div>
+        <img src="https://books.google.co.in/books/publisher/content?id=nijBEAAAQBAJ&pg=PA6&img=1&zoom=3&hl=en&bul=1&sig=ACfU3U05rAG9iMJ5KsQda29J-1utaPl0Wg&w=1280" alt="book-2">
+        <figcaption>ICSE Class 10</figcaption>
+      </figure>
+
+      <ul>
+        <li>Edition:2023</li>
+        <li>Publisher:Eucart</li>
+        <li>Author:Educart</li>
+        <li>published:27 May 2023</li>
+        <li>Page count:246</li>
+        
+      </ul>
+    </div>
+
+    <div class="card-back">
+      <figure>
+        <div class="img-bg"></div>
+        <img src="https://www.rd.com/wp-content/uploads/2021/05/books_quote1.jpg" alt="quote">
+      </figure>
+
+      <button>GET IT</button>
+
+      <div class="design-container">
+        <span class="design design--1"></span>
+        <span class="design design--2"></span>
+        <span class="design design--3"></span>
+        <span class="design design--4"></span>
+        <span class="design design--5"></span>
+        <span class="design design--6"></span>
+        <span class="design design--7"></span>
+        <span class="design design--8"></span>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- /flip-card-container -->
+
+<!-- flip-card-container -->
+<div class="flip-card-container" style="--hue: 350">
+  <div class="flip-card">
+
+    <div class="card-front">
+      <figure>
+        <div class="img-bg"></div>
+        <img src="https://books.google.co.in/books/publisher/content?id=J0LBEAAAQBAJ&pg=PP1&img=1&zoom=3&hl=en&bul=1&sig=ACfU3U2FkVPhJr0MPQUAsv1VcRSTjpryoA&w=1280" alt="book-3">
+        <figcaption>NCERT class 12</figcaption>
+      </figure>
+
+      <ul>
+        <li>Edition:2023</li>
+        <li>Publisher:Eucart</li>
+        <li>Author:Educart</li>
+        <li>published:27 May 2023</li>
+        <li>Page count:204</li>
+      </ul>
+    </div>
+
+    <div class="card-back">
+      <!-- only if the image is necessary -->
+      <figure>
+        <div class="img-bg"></div>
+        <img src="https://www.weareteachers.com/wp-content/uploads/3-20-800x800.jpg" alt="quote">
+      </figure>
+
+      <button>GET IT</button>
+
+      <!-- can add svg here and remove these eight spans -->
+      <div class="design-container">
+        <span class="design design--1"></span>
+        <span class="design design--2"></span>
+        <span class="design design--3"></span>
+        <span class="design design--4"></span>
+        <span class="design design--5"></span>
+        <span class="design design--6"></span>
+        <span class="design design--7"></span>
+        <span class="design design--8"></span>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- /flip-card-container -->
+
+
+
+<div class="flip-card-container" style="--hue: 220">
+  <div class="flip-card">
+
+    <div class="card-front">
+      <figure>
+        <div class="img-bg"></div>
+        <img src="https://books.google.co.in/books/publisher/content?id=H4VIEAAAQBAJ&pg=PP1&img=1&zoom=3&hl=en&bul=1&sig=ACfU3U1EOIR8Vk_h5Ym9FWXfhIxEa22TUw&w=1280" alt="book-4">
+        <figcaption>NCERT class 11</figcaption>
+      </figure>
+
+      <ul>
+        <li>Edition:2018</li>
+        <li>Publisher:Arihant Publication India Limited</li>
+        <li>Author:Purnima Sharma</li>
+        <li>published:27 July 2018</li>
+        <li>Page count:366</li>
+      </ul>
+      </ul>
+    </div>
+
+    <div class="card-back">
+      <figure>
+        <div class="img-bg"></div>
+        <img src="https://hips.hearstapps.com/hmg-prod/images/jhumpa-lahiri-book-quote-1531936024.jpg" alt="quote">
+      </figure>
+
+      <button>GET IT</button>
+
+      <div class="design-container">
+        <span class="design design--1"></span>
+        <span class="design design--2"></span>
+        <span class="design design--3"></span>
+        <span class="design design--4"></span>
+        <span class="design design--5"></span>
+        <span class="design design--6"></span>
+        <span class="design design--7"></span>
+        <span class="design design--8"></span>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- /flip-card-container -->
+
+<!-- flip-card-container -->
+<div class="flip-card-container" style="--hue: 170">
+  <div class="flip-card">
+
+    <div class="card-front">
+      <figure>
+        <div class="img-bg"></div>
+        <img src="https://books.google.co.in/books/publisher/content?id=kvdKEAAAQBAJ&pg=PP1&img=1&zoom=3&hl=en&bul=1&sig=ACfU3U3lCw0ILnAxXceNUHo85UawPRVeHg&w=1280" alt="book-5">
+        <figcaption>NCERT class 11</figcaption>
+      </figure>
+
+      <ul>
+        <li>Edition:2018</li>
+        <li>Publisher:Arihant Publication India Limited</li>
+        <li>Author:Saleem Sanubia</li>
+        <li>published:9 December 2020</li>
+        <li>Page count:448</li>
+      </ul>
+    </div>
+
+    <div class="card-back">
+      <figure>
+        <div class="img-bg"></div>
+        <img src="https://www.keepinspiring.me/wp-content/uploads/2020/02/take-a-good-book-to-bed-thea-dorn-min-1024x1024.jpg" alt="quote">
+      </figure>
+
+      <button>GET IT</button>
+
+      <div class="design-container">
+        <span class="design design--1"></span>
+        <span class="design design--2"></span>
+        <span class="design design--3"></span>
+        <span class="design design--4"></span>
+        <span class="design design--5"></span>
+        <span class="design design--6"></span>
+        <span class="design design--7"></span>
+        <span class="design design--8"></span>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- /flip-card-container -->
+
+<!-- flip-card-container -->
+<div class="flip-card-container" style="--hue: 350">
+  <div class="flip-card">
+
+    <div class="card-front">
+      <figure>
+        <div class="img-bg"></div>
+        <img src="https://books.google.co.in/books/publisher/content?id=4lyUEAAAQBAJ&pg=PP1&img=1&zoom=3&hl=en&bul=1&sig=ACfU3U2r0yImA3ofiW37XMdLVjAhtanjgQ&w=1280" alt="book-6">
+        <figcaption>NCERT class 11</figcaption>
+      </figure>
+
+      <ul>
+        <li>Edition:2018</li>
+        <li>Publisher:SBPD Publications</li>
+        <li>Author:Dr. S. K. Singh, , Sanjay Gupta</li>
+        <li>published:11 October 2022</li>
+        <li>Page count:337</li>
+      </ul>
+    </div>
+
+    <div class="card-back">
+      <!-- only if the image is necessary -->
+      <figure>
+        <div class="img-bg"></div>
+        <img src="https://i0.wp.com/ebookfriendly.com/wp-content/uploads/2021/02/There-is-only-one-thing-that-can-replace-a-book-quote-by-Piotr-Kowalczyk.jpg?resize=540%2C540&ssl=1" alt="quote">
+      </figure>
+
+      <button>GET IT</button>
+
+      <!-- can add svg here and remove these eight spans -->
+      <div class="design-container">
+        <span class="design design--1"></span>
+        <span class="design design--2"></span>
+        <span class="design design--3"></span>
+        <span class="design design--4"></span>
+        <span class="design design--5"></span>
+        <span class="design design--6"></span>
+        <span class="design design--7"></span>
+        <span class="design design--8"></span>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+<!-- /flip-card-container -->
     
 </body>
 </html>
