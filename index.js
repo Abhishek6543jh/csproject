@@ -33,16 +33,23 @@ password:req.body["password"] })
 const loginauth =async (res,username,password)=>{
   const result = await user.exists({username:username,password:password})
   if(result){
-    res.redirect("/")
+    res.redirect("/home")
   }
   else{
     res.redirect("/login")
   }
 }
 //
+
+
+
+
+app.get("/home",(req,res)=>{
+  res.render("index.ejs")
+})
 app.get("/",(req,res)=>{
-    res.render("index.ejs");
-});
+  res.redirect("/login")
+})
 app.get("/regester",(req,res)=>{
     res.render("regester.ejs");
 });
@@ -57,7 +64,6 @@ app.post("/login/auth",(req,res)=>{
 });
 app.post("/regester/reg",(req,res)=>{
       uploadtodb(req,res)
-      
       res.redirect("/login");
 });
 app.listen(port,(req,res)=>{
