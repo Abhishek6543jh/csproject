@@ -3,18 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home</title>
-   <nav>
+    <title>read'n share</title>
+   
+      <div id="nav_container">
+        <nav>
+          <span> <a href="#container-home">HOME</a></span>
+          <span><a href="#book-find">BOOKS</a></span>
+          <span><a href="#about">CONTACT</a></span>
+          <span><a href="#contact">ABOUT</a></span>
+          
+        </nav>
+        <div id="selector">
+          <div id="shape"></div>
+          <div id="shape_two"></div>
+        </div>
+      </div>
     
-   </nav>
-
    <style>
+    html{
+      scroll-behavior: smooth;
+    }
+    body
+{
+  background-color:#2c3e50;
+}
+
+#nav_container
+{ overflow: hidden;
+  width:600px;
+  height:70px;
+  background:#2980b9;
+  margin:0 auto;
+  border-radius:10px;
+  text-align:center;
+  margin-top:60px;
+  box-shadow:0px 3px 0px #1F5A87, 0px 0px 7px black;
+}
+nav span
+{
+  margin-left:40px;
+  font-size:20px;
+  color:white;
+  font-family:sans-serif;
+  position:relative;top:22px;left:-15px;
+  z-index:1;
+  padding:50px 0px 50px 0px;
+  cursor:pointer;
+}
+nav span:active
+{
+  opacity:0.3;
+}
+#selector
+{
+  height:100%;
+  width:80px;
+  background:#8e44ad;
+  position:relative;top:-24px;left:61px;
+  z-index:0;
+}
+a{
+  all: unset;
+  color: #61dec9;
+}
+#shape
+{
+  border-bottom: 20px solid #5B2B6D;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  height: 0;
+  width: 50px;
+  -webkit-transform:rotate(180deg);
+  position:relative;top:70px;
+}
+#shape_two
+{
+  width:50px;
+  height:50px;
+  margin:0 auto;
+  position:relative;top:70px;
+  background: rgb(70,33,84); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(70,33,84,1) 0%, rgba(70,33,84,1) 14%, rgba(44,62,80,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(70,33,84,1)), color-stop(14%,rgba(70,33,84,1)), color-stop(100%,rgba(44,62,80,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(70,33,84,1) 0%,rgba(70,33,84,1) 14%,rgba(44,62,80,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(70,33,84,1) 0%,rgba(70,33,84,1) 14%,rgba(44,62,80,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(70,33,84,1) 0%,rgba(70,33,84,1) 14%,rgba(44,62,80,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(70,33,84,1) 0%,rgba(70,33,84,1) 14%,rgba(44,62,80,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#462154', endColorstr='#2c3e50',GradientType=0 ); /* IE6-9 */
+
+}
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
+body, h1, p {
+            margin: 0;
+            padding: 0;
+        }
+        h1,p
+        {
+          padding: 30px;
+        }
 
-body {
-background: hsl(220, 10%, 12%);
-}
+        /* Define your main container styles */
+        .container-home{
+          background-image: url("https://images.unsplash.com/photo-1544716278-e513176f20b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2874&q=80");
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size:cover ;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+           
+        }
+
+        /* Style the content */
+        .content {
+            text-align: center;
+            max-width: 1000px;
+            padding: 100px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style the header */
+        .header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        /* Style the call to action button */
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #0056b3;
+        }
 
 /* default */
 *,
@@ -26,7 +160,7 @@ background: hsl(220, 10%, 12%);
 }
 
 /* body */
-.main-container {
+.main-container-bookfind {
   min-height: 100vh;
   padding: 40px;
 
@@ -35,7 +169,7 @@ background: hsl(220, 10%, 12%);
   justify-content: center;
   align-items: center;
 
-  background: hsl(220, 10%, 12%);
+  background: radial-gradient(circle at 10% 20%, rgb(69, 86, 102) 0%, rgb(34, 34, 34) 90%);
   font-family: "Lato", "Segoe Ui", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
@@ -380,7 +514,19 @@ button:focus+.design-container {
     
 </head>
 <body>
-  <div class="main-container">
+  <div id="container-home">
+  <div class="container-home">
+    <div class="content">
+        <div class="header">
+            <h1>Welcome to read'n share</h1>
+        </div>
+        <p>books are most the powerful tool that will help to achive success</p>
+        <a href="#book-find" class="cta-button">get a book</a>
+    </div>
+</div>
+</div>
+<div id ="book-find">
+  <div class="main-container-bookfind">
     
       <!-- flip-card-container -->
 <div class="flip-card-container" style="--hue: 220">
@@ -389,16 +535,16 @@ button:focus+.design-container {
     <div class="card-front">
       <figure>
         <div class="img-bg"></div>
-        <img src="https://books.google.co.in/books/publisher/content?id=9K_xDwAAQBAJ&pg=PP1&img=1&zoom=3&hl=en&bul=1&sig=ACfU3U0bQU1lMec2rdd7-l7pVx_0nrGOMg&w=1280" alt="book-1">
+        <img src="https://books.google.co.in/books/publisher/content?id=2YRIEAAAQBAJ&pg=PP1&img=1&zoom=3&hl=en&sig=ACfU3U2dSrchReCH6C_z0rLAlZf55r595Q&w=1280" alt="book-1">
         <figcaption>NCERT class 10</figcaption>
       </figure>
 
       <ul>
         <li>Edition:2020</li>
-        <li>Publisher:Repro Books Limited</li>
-        <li>Author:Educart</li>
+        <li>Publisher:Arihant Publications India limited, 2014</li>
+        <li>Author:Gajendra Singh, Gurudarshan Singh</li>
         <li>published:11 May 2020</li>
-        <li>Page count:218</li>
+        <li>Page count:390</li>
       </ul>
     </div>
 
@@ -650,6 +796,7 @@ button:focus+.design-container {
     </div>
 
   </div>
+</div>
 </div>
 </div>
 <!-- /flip-card-container -->
